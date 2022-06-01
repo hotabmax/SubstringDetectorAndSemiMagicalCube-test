@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: hotabmax
+      changes:
+        - createTable:
+            tableName: historyofinputstrings
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: inputsubstrings
+                  type: varchar
+              - column:
+                  name: inputstrings
+                  type: varchar
+        - createTable:
+            tableName: historyofsemimagicalcube
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+        - createTable:
+            tableName: numbersofsemimagicalcube
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: number
+                  type: serial
+              - column:
+                  name: position
+                  type: serial
+              - column:
+                  name: historyofsemimagicalcubeid
+                  type: serial
+        - addForeignKeyConstraint:
+            constraintName: dependency_numbersofsemimagicalcube_of_historyofsemimagicalcube
+            baseColumnNames: historyofsemimagicalcubeid
+            baseTableName: numbersofsemimagicalcube
+            referencedColumnNames: id
+            referencedTableName: historyofsemimagicalcube
+
